@@ -13,11 +13,12 @@ services:
     ports:
       - "4407:3306"
     restart: "always"
-    environment:
-      MYSQL_ROOT_PASSWORD: ""
-      MYSQL_DATABASE: "Facturacion"
-      MYSQL_USER: "root"
-      MYSQL_PASSWORD: ""
     volumes:
-      - ./sql:/Facturacionb.d    
+      - ./sql/facturacion.sql:/docker-entrypoint-initdb.d/facturacion.sql
+      - ./sql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "12345678"
+      MYSQL_DATABASE: "Facturacion"
+      MYSQL_USER: "facturacion"
+      MYSQL_PASSWORD: "12345678"
     
